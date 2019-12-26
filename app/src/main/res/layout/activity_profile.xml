@@ -18,9 +18,10 @@
             android:id="@+id/imageView"
             android:layout_width="130dp"
             android:layout_height="130dp"
-            android:layout_marginTop="70dp"
             android:layout_gravity="center"
+            android:layout_marginTop="50dp"
             app:srcCompat="@drawable/team" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,43 +37,48 @@
             android:gravity="center"
             android:layout_marginTop="10dp"/>
 
-        <TextView
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/nama"
             android:text="rizqikrisandika"
             android:textSize="20sp"
+            android:elevation="10dp"
             android:layout_marginTop="50dp"/>
 
-        <TextView
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tgl_lahir"
             android:text="23 maret 1999"
             android:textSize="20sp"
+            android:elevation="10dp"
             android:layout_marginTop="20dp"/>
 
-        <TextView
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/jenis_kelamin"
             android:text="Laki-Laki"
             android:textSize="20sp"
+            android:elevation="10dp"
             android:layout_marginTop="20dp"/>
-        <TextView
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/no_hp"
             android:text="081228214411"
             android:textSize="20sp"
+            android:elevation="10dp"
             android:layout_marginTop="20dp"/>
 
-        <TextView
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/alamat"
             android:text="Perumahan Taman Sedayu 3"
             android:textSize="20sp"
+            android:elevation="10dp"
             android:layout_marginTop="20dp"/>
 
 

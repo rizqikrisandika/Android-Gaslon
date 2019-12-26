@@ -8,6 +8,9 @@
     android:background="@color/bakcground"
     tools:context=".login">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,8 +30,10 @@
         <EditText
             android:id="@+id/email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
+            android:layout_height="50dp"
+            android:elevation="30dp"
+            android:backgroundTint="#fff"
+            android:background="@drawable/edit_text"
             android:inputType="textEmailAddress"
             android:layout_marginTop="50dp"
             android:hint="Email" />
@@ -36,11 +41,22 @@
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginTop="20dp"
-            android:ems="10"
+            android:elevation="30dp"
+            android:backgroundTint="#fff"
+            android:background="@drawable/edit_text"
             android:hint="Password"
             android:inputType="textPassword" />
+        <TextView
+            android:id="@+id/lupaPsw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lupa Password ?"
+            android:gravity="right"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:textColor="@android:color/white"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -100,19 +116,24 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="30dp"
+            android:background="@drawable/button_oval"
+            android:backgroundTint="#fff"
             android:text="Login" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Forgot Password?"
+            android:text="Register"
             android:gravity="center"
             android:textStyle="bold"
             android:layout_marginTop="20dp"
             android:textColor="@android:color/white"/>
 
+
+
     </LinearLayout>
 
+    </ScrollView>
 
 </LinearLayout>
