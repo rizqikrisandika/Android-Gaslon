@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "57156197685",
+    "firebase_url": "https://gaslonid-40e67.firebaseio.com",
+    "project_id": "gaslonid-40e67",
+    "storage_bucket": "gaslonid-40e67.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:57156197685:android:af4aefbe90d98950e8c07c",
+        "android_client_info": {
+          "package_name": "com.example.gaslon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "57156197685-oq5gqf8okut4kv8n2dr05odo9pnrj56i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gaslon",
+            "certificate_hash": "77472c39ffd0d12ed92bc488c90847dcbd332a54"
+          }
+        },
+        {
+          "client_id": "57156197685-0h3tvtkseefdsrojd59ik5l7ohbf2un7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmabRKqXqz89l23dRlD8-jb8rFCeUJxI4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "57156197685-0h3tvtkseefdsrojd59ik5l7ohbf2un7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
