@@ -38,49 +38,59 @@
             android:layout_marginTop="10dp"/>
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/nama"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/edit_txtprofil"
+            android:backgroundTint="#CECECE"
+            android:elevation="30dp"
             android:text="rizqikrisandika"
-            android:textSize="20sp"
-            android:elevation="10dp"
-            android:layout_marginTop="50dp"/>
+            android:textSize="20sp" />
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:id="@+id/tgl_lahir"
             android:text="23 maret 1999"
+            android:backgroundTint="#CECECE"
+            android:background="@drawable/edit_txtprofil"
             android:textSize="20sp"
-            android:elevation="10dp"
+            android:elevation="30dp"
             android:layout_marginTop="20dp"/>
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:backgroundTint="#CECECE"
+            android:background="@drawable/edit_txtprofil"
+            android:textSize="20sp"
+            android:elevation="30dp"
+            android:layout_marginTop="20dp"
+            android:entries="@array/android_dropdown_arrays" />
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/jenis_kelamin"
-            android:text="Laki-Laki"
-            android:textSize="20sp"
-            android:elevation="10dp"
-            android:layout_marginTop="20dp"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:id="@+id/no_hp"
             android:text="081228214411"
+            android:backgroundTint="#CECECE"
+            android:background="@drawable/edit_txtprofil"
             android:textSize="20sp"
-            android:elevation="10dp"
+            android:elevation="30dp"
             android:layout_marginTop="20dp"/>
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:id="@+id/alamat"
             android:text="Perumahan Taman Sedayu 3"
+            android:background="@drawable/edit_txtprofil"
             android:textSize="20sp"
-            android:elevation="10dp"
+            android:backgroundTint="#CECECE"
+            android:elevation="30dp"
             android:layout_marginTop="20dp"/>
-
 
 
         <Button
@@ -88,8 +98,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:background="@color/bakcground"
             android:textColor="@android:color/white"
+            android:backgroundTint="@color/bakcground"
+            android:background="@drawable/button_oval"
             android:text="Edit" />
 
     </LinearLayout>
