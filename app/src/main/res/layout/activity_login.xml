@@ -23,7 +23,7 @@
             android:id="@+id/imageView"
             android:layout_width="159dp"
             android:layout_height="159dp"
-            android:layout_marginTop="82dp"
+            android:layout_marginTop="40dp"
             android:layout_gravity="center"
             app:srcCompat="@drawable/team" />
 
