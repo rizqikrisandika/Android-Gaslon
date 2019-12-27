@@ -4,4 +4,6 @@
         <item>Laki - Laki</item>
         <item>Perempuan</item>
     </string-array>
+    <string name="title_activity_orderloc">Map</string>
+    <string name="google_direc_key">AIzaSyAuXMST593tmgyisSwEAm7HYa1kCf-6djU</string>
 </resources>
