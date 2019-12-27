@@ -8,6 +8,10 @@
     android:background="@color/bakcground"
     tools:context=".signup">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,41 +30,55 @@
         <EditText
             android:id="@+id/name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
+            android:layout_height="50dp"
+            android:elevation="30dp"
             android:inputType="textPersonName"
+            android:background="@drawable/edit_text"
             android:layout_marginTop="50dp"
+            android:backgroundTint="#fff"
             android:hint="Name" />
 
         <EditText
             android:id="@+id/email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
+            android:layout_height="50dp"
+            android:elevation="30dp"
+            android:background="@drawable/edit_text"
             android:inputType="textPersonName"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#fff"
             android:hint="Email" />
 
         <EditText
             android:id="@+id/phone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
+            android:layout_height="50dp"
+            android:elevation="30dp"
+            android:background="@drawable/edit_text"
             android:inputType="phone"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#fff"
             android:hint="Phone" />
 
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
+            android:layout_height="50dp"
+            android:elevation="30dp"
+            android:background="@drawable/edit_text"
             android:inputType="textPassword"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#fff"
             android:hint="Password" />
 
         <EditText
             android:id="@+id/repassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
+            android:layout_height="50dp"
+            android:elevation="30dp"
+            android:background="@drawable/edit_text"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#fff"
             android:inputType="textPassword"
             android:hint="Confirm Password" />
 
@@ -68,12 +86,15 @@
             android:id="@+id/signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="#fff"
+            android:textColor="@color/bakcground"
+            android:background="@drawable/button_oval"
             android:text="Sign Up now" />
 
     </LinearLayout>
 
-
+    </ScrollView>
 
 
 </LinearLayout>
