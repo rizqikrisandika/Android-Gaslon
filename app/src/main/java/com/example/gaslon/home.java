@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class home extends AppCompatActivity {
-    ImageView btOrderhome;
+    ImageView btOrderhome,btStorehome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +16,15 @@ public class home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         btOrderhome = findViewById(R.id.orderhome);
+        btStorehome = findViewById(R.id.storehome);
+
+        btStorehome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(home.this, Store.class);
+                startActivity(i);
+            }
+        });
         btOrderhome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
