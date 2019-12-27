@@ -19,6 +19,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.JointType;
 import com.google.android.gms.maps.model.LatLng;
@@ -103,7 +104,7 @@ public class Orderloc extends FragmentActivity implements OnMapReadyCallback {
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(16.0659970, 108.212552);
+        final LatLng sydney = new LatLng(-7.797068, 110.370529);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Lokasi Saya"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         mMap.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition.Builder()
@@ -163,7 +164,7 @@ public class Orderloc extends FragmentActivity implements OnMapReadyCallback {
 
                                 mMap.addMarker(new MarkerOptions().position(polylineList.get(polylineList.size()-1)));
 
-                                ValueAnimator polylineAnimator = ValueAnimator.ofInt(0,100);
+                                final ValueAnimator polylineAnimator = ValueAnimator.ofInt(0,100);
                                 polylineAnimator.setDuration(2000);
                                 polylineAnimator.setInterpolator(new LinearInterpolator());
                                 polylineAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -178,6 +179,50 @@ public class Orderloc extends FragmentActivity implements OnMapReadyCallback {
                                     }
                                 });
                                 polylineAnimator.start();
+                                marker = mMap.addMarker(new MarkerOptions().position(sydney)
+                                        .flat(true)
+                                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.logo)));
+
+                                handler = new Handler();
+                                index = -1;
+                                next = 1;
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        if(index<polylineList.size()-1){
+                                            index++;
+                                            next = index+1;
+                                        }
+                                        if(index<polylineList.size() - 1) {
+                                            startPosition = polylineList.get(index);
+                                            endPosition = polylineList.get(next);
+                                        }
+
+                                        ValueAnimator valueAnimator = ValueAnimator.ofFloat(0,1);
+                                        valueAnimator.setDuration(3000);
+                                        valueAnimator.setInterpolator(new LinearInterpolator());
+                                        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                                            @Override
+                                            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                                                v = valueAnimator.getAnimatedFraction();
+                                                lng = v*endPosition.longitude+(1-v)
+                                                        *startPosition.longitude;
+                                                lat = v*endPosition.latitude+(1-v)
+                                                        *startPosition.latitude;
+                                                LatLng newPos = new LatLng(lat,lng);
+                                                marker.setPosition(newPos);
+                                                marker.setAnchor(0.5f,0.5f);
+                                                marker.setRotation(getBearing(startPosition,newPos));
+                                                mMap.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition.Builder()
+                                                .target(newPos)
+                                                .zoom(15.5f)
+                                                .build()));
+                                            }
+                                        });
+                                        valueAnimator.start();
+                                        handler.postDelayed(this, 3000);
+                                    }
+                                },3000);
                             }catch (Exception e){
                                 e.printStackTrace();
                             }
@@ -192,6 +237,21 @@ public class Orderloc extends FragmentActivity implements OnMapReadyCallback {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    private float getBearing(LatLng startPosition, LatLng newPos) {
+        double lat = Math.abs(startPosition.latitude - newPos.latitude);
+        double lng = Math.abs(startPosition.longitude - newPos.longitude);
+
+        if(startPosition.latitude < newPos.latitude && startPosition.longitude < newPos.longitude)
+            return (float) (Math.toDegrees(Math.atan(lng/lat)));
+        else if(startPosition.latitude >= newPos.latitude && startPosition.longitude < newPos.longitude)
+            return (float) ((90-Math.toDegrees(Math.atan(lng/lat)))+90);
+        else if(startPosition.latitude >= newPos.latitude && startPosition.longitude >= newPos.longitude)
+            return (float) (Math.toDegrees(Math.atan(lng/lat))+180);
+        else if(startPosition.latitude < newPos.latitude && startPosition.longitude >= newPos.longitude)
+            return (float) ((90-Math.toDegrees(Math.atan(lng/lat)))+270);
+        return  -1;
     }
 
     private List<LatLng> decodePoly(String encoded) {
