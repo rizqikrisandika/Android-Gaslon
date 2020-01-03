@@ -104,9 +104,9 @@ public class Orderloc extends FragmentActivity implements OnMapReadyCallback {
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
         // Add a marker in Sydney and move the camera
-        final LatLng sydney = new LatLng(-7.797068, 110.370529);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Lokasi Saya"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        final LatLng jakarta = new LatLng(-6.117664, 106.906349);
+        mMap.addMarker(new MarkerOptions().position(jakarta).title("Lokasi Saya"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(jakarta, 14f));
         mMap.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition.Builder()
                         .target(googleMap.getCameraPosition().target)
                         .zoom(17)
@@ -118,7 +118,7 @@ public class Orderloc extends FragmentActivity implements OnMapReadyCallback {
             requestUrl = "https://maps.googleapis.com/maps/api/directions/json?"+
                     "mode=driving&"+
                     "transit_routing_preference=less_driving&"+
-                    "origin="+sydney.latitude+","+sydney.latitude+"&"+
+                    "origin="+jakarta.latitude+","+jakarta.latitude+"&"+
                     "destination="+destination+"&"+
                     "key="+getResources().getString(R.string.google_direc_key);
             Log.d("URL",requestUrl);
@@ -179,7 +179,7 @@ public class Orderloc extends FragmentActivity implements OnMapReadyCallback {
                                     }
                                 });
                                 polylineAnimator.start();
-                                marker = mMap.addMarker(new MarkerOptions().position(sydney)
+                                marker = mMap.addMarker(new MarkerOptions().position(jakarta)
                                         .flat(true)
                                         .icon(BitmapDescriptorFactory.fromResource(R.drawable.logo)));
 
