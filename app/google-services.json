@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "57156197685-4b1je3j6q4ncfoqc72n5pil1shalrsab.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gaslon",
+            "certificate_hash": "6ff530c1a46c4d2454c635283b3d600fefc88495"
+          }
+        },
+        {
           "client_id": "57156197685-oq5gqf8okut4kv8n2dr05odo9pnrj56i.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

@@ -41,8 +41,8 @@ public class Lokasi extends FragmentActivity implements OnMapReadyCallback {
 
         // Add a marker in Sydney and move the camera
         //LatLng sydney = new LatLng(-34, 151);
-        LatLng jogja = new LatLng(-7.795910, 110.374060);
-        mMap.addMarker(new MarkerOptions().position(jogja).title("Yogyakarta"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(jogja, 18));
+        LatLng jkt = new LatLng(-6.117664, 106.906349);
+        mMap.addMarker(new MarkerOptions().position(jkt).title("Jakarta"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(jkt, 14f));
     }
 }
