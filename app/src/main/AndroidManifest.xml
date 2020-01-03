@@ -31,8 +31,11 @@
             android:value="@string/google_maps_key" />
 
         <activity
+            android:name=".Lokasi"
+            android:label="@string/title_activity_lokasi"></activity>
+        <activity
             android:name=".Orderloc"
-            android:label="@string/title_activity_orderloc"></activity>
+            android:label="@string/title_activity_orderloc" />
         <activity android:name=".Order" />
         <activity android:name=".Store" />
         <activity android:name=".profile" />
