@@ -7,4 +7,7 @@
     <string name="title_activity_orderloc">Map</string>
     <string name="google_direc_key">AIzaSyAQGtVVN3vpi0gM2qbldSN9X6jOS44nmm8</string>
     <string name="title_activity_maps">Map</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
