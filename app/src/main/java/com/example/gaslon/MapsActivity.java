@@ -2,6 +2,8 @@ package com.example.gaslon;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -15,10 +17,15 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.List;
+
+import javax.annotation.Nonnull;
+
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private static final int MAX_RESULT = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +35,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         /*** ERROR HERE ***/
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+    }
+
+    private LatLng getLatlngFromAddress(String address){
+        Geocoder coder = new Geocoder(this);
+        List<Address> addresses;
+        try {
+            addresses = coder.getFromLocationName(address, MAX_RESULT);
+            if(addresses==null){
+                return null;
+            }
+            Address location = addresses.get(0);
+
+            return new LatLng(location.getLatitude(),location.getLongitude());
+        }catch (Exception e){
+            Toast.makeText(this, "Error : "+e.toString(),Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**
@@ -42,12 +67,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        LatLng address = getLatlngFromAddress("Amikom");
+        if (address != null){
+            googleMap.addMarker(new MarkerOptions().position(address).title("RUMAH"));
+            float zoomlevel = 20.0f;
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(address, zoomlevel));
+        }
+
+        requestLocationPermission();
+        if (ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED){
+            enableMyLocationButton();
+        }
 
         // Add a marker in Sydney and move the camera
-        LatLng amikom = new LatLng(-7.759582, 110.40828);
-        mMap.addMarker(new MarkerOptions().position(amikom).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(amikom, 14f));
+        //LatLng amikom = new LatLng(-7.759582, 110.40828);
+        //mMap.addMarker(new MarkerOptions().position(amikom).title("Marker in Sydney"));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(amikom, 14f));
     }
+
     private void enableMyLocationButton(){
         mMap.setMyLocationEnabled(true);
         mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
@@ -66,5 +103,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_CODE_LOCATION);
         }
     }
-
+    private void onRequestPermissionResult(int requestcode, @Nonnull String[] permissions,@Nonnull int[] grantResult){
+        super.onRequestPermissionsResult(requestcode,permissions,grantResult);
+        if (requestcode==REQUEST_CODE_LOCATION && grantResult.length>0 && grantResult[0] == PackageManager.PERMISSION_GRANTED){
+            enableMyLocationButton();
+        }
+    }
 }

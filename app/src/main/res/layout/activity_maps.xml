@@ -45,7 +45,7 @@ android:layout_height="match_parent"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/layout_panel"
+        android:layout_below="@id/btDir"
         tools:context=".MapsActivity" />
 
 
