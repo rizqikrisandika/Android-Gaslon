@@ -10,7 +10,7 @@ android:layout_height="match_parent"
     android:id="@+id/layout_panel"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
     <EditText
         android:layout_width="match_parent"
@@ -20,14 +20,23 @@ android:layout_height="match_parent"
         android:layout_margin="10dp"
         android:layout_weight="5"
         />
+
     <Button
         android:id="@+id/btnCari"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Go"
-        android:layout_weight="1"/>
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="Go" />
+
 
 </LinearLayout>
+    <Button
+        android:id="@+id/btDir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_panel"
+        android:gravity="center"
+        android:text="Direction" />
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
@@ -36,6 +45,8 @@ android:layout_height="match_parent"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_toEndOf="@id/layout_panel"
+        android:layout_below="@id/layout_panel"
         tools:context=".MapsActivity" />
+
+
 </RelativeLayout>

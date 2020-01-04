@@ -20,7 +20,7 @@ public class Order extends AppCompatActivity {
         btOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Order.this, Orderloc.class);
+                Intent i = new Intent(Order.this, MapsActivity.class);
                 startActivity(i);
             }
         });
