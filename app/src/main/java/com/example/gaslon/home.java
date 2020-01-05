@@ -1,14 +1,27 @@
 package com.example.gaslon;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class home extends AppCompatActivity {
-    ImageView btOrderhome,btStorehome,btLiveChat, imgProfil;
+    private ImageView btOrderhome,btStorehome,btLiveChat, imgProfil;
+    private TextView textName;
+    private String currentUserId;
+    private FirebaseAuth mAuth;
+    private DatabaseReference profileUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +32,24 @@ public class home extends AppCompatActivity {
         btStorehome = findViewById(R.id.storehome);
         btLiveChat = findViewById(R.id.btLiveChat);
         imgProfil = findViewById(R.id.imgProfil);
+        textName = findViewById(R.id.profil_nama_home);
+        mAuth = FirebaseAuth.getInstance();
+        currentUserId = mAuth.getCurrentUser().getUid();
+        profileUser = FirebaseDatabase.getInstance().getReference().child("user").child(currentUserId);
+
+        profileUser.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String mName = dataSnapshot.child("prfName").getValue().toString();
+
+                textName.setText(mName);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         btStorehome.setOnClickListener(new View.OnClickListener() {
             @Override

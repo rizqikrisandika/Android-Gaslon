@@ -26,7 +26,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/profil_nama"
+        android:id="@+id/profil_nama_home"
         android:text="rizqikrisandika"
         android:gravity="center"
         android:layout_marginBottom="50dp"
