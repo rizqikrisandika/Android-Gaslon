@@ -7,20 +7,20 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
-    Button btLogin;
+public class Order extends AppCompatActivity {
+    Button btOrder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_order);
 
-        btLogin = findViewById(R.id.signinbtn);
+        btOrder = findViewById(R.id.orderorder);
 
-        btLogin.setOnClickListener(new View.OnClickListener() {
+        btOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, login.class);
+                Intent i = new Intent(Order.this, Orderloc.class);
                 startActivity(i);
             }
         });

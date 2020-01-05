@@ -1,60 +1,59 @@
 package com.example.gaslon;
 
-import androidx.fragment.app.FragmentActivity;
-
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentActivity;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.Polyline;
 
 import java.util.List;
+
+import javax.annotation.Nonnull;
+
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private MarkerOptions place1, place2;
-    Polyline curPolyline;
-    private static final int MAX_RESULTS = 1;
+    private static final int MAX_RESULT = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        MapFragment mapFragment = (MapFragment) getFragmentManager()
-                .findFragmentById(R.id.map);
+        /*** ERROR HERE ***/
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map1);
         mapFragment.getMapAsync(this);
-
-        place1 = new MarkerOptions().position(new LatLng(-7.702020, 110.408962)).title("Toko 1");
-        place2 = new MarkerOptions().position(new LatLng(-7.702020, 110.408962)).title("Toko 1");
-
     }
 
-    private String getUrl(LatLng origin, LatLng dest, String directionMode) {
-        //origin of route
-        String str_origin = "origin=" + origin.latitude + "," + origin.longitude;
-        //Destination of route
-        String str_dest = "destination=" + dest.latitude + "," + dest.longitude;
-        //mode
-        String mode = "node=" + directionMode;
-        //building the parameter to the web services
-        String parameters = str_origin + "&" +str_dest + "&" + mode;
-        //output format
-        String output = "json";
-        //building the url to the web service
-        String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters + "&key" + getString(R.string.google_maps_key);
-        return url;
-    }
+    private LatLng getLatlngFromAddress(String address){
+        Geocoder coder = new Geocoder(this);
+        List<Address> addresses;
+        try {
+            addresses = coder.getFromLocationName(address, MAX_RESULT);
+            if(addresses==null){
+                return null;
+            }
+            Address location = addresses.get(0);
 
+            return new LatLng(location.getLatitude(),location.getLongitude());
+        }catch (Exception e){
+            Toast.makeText(this, "Error : "+e.toString(),Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     /**
      * Manipulates the map once available.
@@ -68,29 +67,46 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        LatLng address = getLatlngFromAddress("Amikom");
+        if (address != null){
+            googleMap.addMarker(new MarkerOptions().position(address).title("RUMAH"));
+            float zoomlevel = 20.0f;
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(address, zoomlevel));
+        }
+
+        requestLocationPermission();
+        if (ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED){
+            enableMyLocationButton();
+        }
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-6.117664, 106.906349);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,15f));
+        //LatLng amikom = new LatLng(-7.759582, 110.40828);
+        //mMap.addMarker(new MarkerOptions().position(amikom).title("Marker in Sydney"));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(amikom, 14f));
     }
 
-    private LatLng getLatLngFromAddress(String address){
-        Geocoder coder = new Geocoder(this);
-        List<Address> addresses;
-
-        try {
-            addresses = coder.getFromLocationName(address,MAX_RESULTS);
-            if (addresses == null){
-                return null;
+    private void enableMyLocationButton(){
+        mMap.setMyLocationEnabled(true);
+        mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
+            @Override
+            public boolean onMyLocationButtonClick() {
+                Toast.makeText(MapsActivity.this,"Lokasi anda saat ini", Toast.LENGTH_SHORT).show();
+                return false;
             }
-            Address location = addresses.get(0);
+        });
+    }
 
-            return new LatLng(location.getLatitude(), location.getLongitude());
-        } catch (Exception e){
-            Toast.makeText(this,"An error occured: "+e.toString(), Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
+    private static final int REQUEST_CODE_LOCATION = 0;
+
+    private void requestLocationPermission(){
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_CODE_LOCATION);
         }
-        return null;
+    }
+    private void onRequestPermissionResult(int requestcode, @Nonnull String[] permissions,@Nonnull int[] grantResult){
+        super.onRequestPermissionsResult(requestcode,permissions,grantResult);
+        if (requestcode==REQUEST_CODE_LOCATION && grantResult.length>0 && grantResult[0] == PackageManager.PERMISSION_GRANTED){
+            enableMyLocationButton();
+        }
     }
 }

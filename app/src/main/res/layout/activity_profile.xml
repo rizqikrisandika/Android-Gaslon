@@ -37,7 +37,7 @@
             android:gravity="center"
             android:layout_marginTop="10dp"/>
 
-        <EditText
+        <TextView
             android:id="@+id/nama"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -48,10 +48,10 @@
             android:text="rizqikrisandika"
             android:textSize="20sp" />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:id="@+id/tgl_lahir"
+            android:id="@+id/profileEmail"
             android:text="23 maret 1999"
             android:backgroundTint="#CECECE"
             android:background="@drawable/edit_txtprofil"
@@ -70,7 +70,7 @@
             android:layout_marginTop="20dp"
             android:entries="@array/android_dropdown_arrays" />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:id="@+id/no_hp"
@@ -78,17 +78,6 @@
             android:backgroundTint="#CECECE"
             android:background="@drawable/edit_txtprofil"
             android:textSize="20sp"
-            android:elevation="30dp"
-            android:layout_marginTop="20dp"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:id="@+id/alamat"
-            android:text="Perumahan Taman Sedayu 3"
-            android:background="@drawable/edit_txtprofil"
-            android:textSize="20sp"
-            android:backgroundTint="#CECECE"
             android:elevation="30dp"
             android:layout_marginTop="20dp"/>
 
@@ -104,5 +93,4 @@
             android:text="Edit" />
 
     </LinearLayout>
-
 </LinearLayout>

@@ -1,7 +1,5 @@
 package com.example.gaslon;
 
-import androidx.fragment.app.FragmentActivity;
-
 import android.animation.ValueAnimator;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,6 +10,8 @@ import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.fragment.app.FragmentActivity;
 
 import com.example.gaslon.Remote.IGoogleApi;
 import com.google.android.gms.maps.CameraUpdate;
@@ -56,7 +56,6 @@ public class Orderloc extends FragmentActivity implements OnMapReadyCallback {
     private String destination;
     private PolylineOptions polylineOptions, blackPolylineOptions;
     private Polyline blackPolyline, greyPolyline;
-    private  LatLng myLocation;
 
     IGoogleApi mService;
 
@@ -67,10 +66,11 @@ public class Orderloc extends FragmentActivity implements OnMapReadyCallback {
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
 
         polylineList = new ArrayList<>();
-        btnCari = (Button)findViewById(R.id.btnCari);
-        txtKirim = (EditText)findViewById(R.id.txtKirim);
+        btnCari = findViewById(R.id.btnCari);
+        txtKirim = findViewById(R.id.txtKirim);
         btnCari.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,7 +104,7 @@ public class Orderloc extends FragmentActivity implements OnMapReadyCallback {
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
         // Add a marker in Sydney and move the camera
-        final LatLng jakarta = new LatLng(-6.117664, 106.906349);
+        final LatLng jakarta = new LatLng(-7.759776, 110.408821);
         mMap.addMarker(new MarkerOptions().position(jakarta).title("Lokasi Saya"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(jakarta, 14f));
         mMap.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition.Builder()
@@ -113,7 +113,7 @@ public class Orderloc extends FragmentActivity implements OnMapReadyCallback {
                         .bearing(30)
                         .tilt(45)
                         .build()));
-        String requestUrl = null;
+        String requestUrl;
         try {
             requestUrl = "https://maps.googleapis.com/maps/api/directions/json?"+
                     "mode=driving&"+
