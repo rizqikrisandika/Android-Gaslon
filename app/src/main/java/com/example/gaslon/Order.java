@@ -1,11 +1,11 @@
 package com.example.gaslon;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Order extends AppCompatActivity {
     Button btOrder;
@@ -20,7 +20,7 @@ public class Order extends AppCompatActivity {
         btOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Order.this, MapsActivity.class);
+                Intent i = new Intent(Order.this, Orderloc.class);
                 startActivity(i);
             }
         });
