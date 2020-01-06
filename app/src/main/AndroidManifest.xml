@@ -16,6 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Order"></activity>
+        <activity android:name=".TokoAdd" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -34,7 +36,6 @@
         <activity
             android:name=".Orderloc"
             android:label="@string/title_activity_orderloc" />
-        <activity android:name=".Order" />
         <activity android:name=".Store" />
         <activity android:name=".profile" />
         <activity android:name=".home" />
@@ -47,7 +48,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Chatroom"></activity>
+        <activity android:name=".Chatroom" />
     </application>
 
 </manifest>

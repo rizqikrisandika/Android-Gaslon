@@ -34,7 +34,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class LiveChat extends AppCompatActivity {
     private Button add_room;

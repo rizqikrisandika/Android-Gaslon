@@ -65,13 +65,6 @@ public class home extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        btLiveChat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(home.this, LiveChat.class);
-                startActivity(i);
-            }
-        });
         imgProfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

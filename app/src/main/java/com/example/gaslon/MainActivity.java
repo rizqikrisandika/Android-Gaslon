@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, login.class);
+                Intent i = new Intent(MainActivity.this, Orderloc.class);
                 startActivity(i);
             }
         });
