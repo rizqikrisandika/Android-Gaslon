@@ -11,20 +11,6 @@ public class userDB {
         this.prfPhone = prfPhone;
     }
 
-    public String getPrfName() {
-        return prfName;
-    }
-
-    public String getPrfEmail() {
-        return prfEmail;
-    }
-
-    public String getPrfPhone() {
-        return prfPhone;
-    }
-
-
-
     public userDB() {
     }
 
