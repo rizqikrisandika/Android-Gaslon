@@ -38,7 +38,7 @@ public class signup extends AppCompatActivity implements View.OnClickListener{
         mEmail = findViewById(R.id.email);
         mPassword = findViewById(R.id.password);
         mPhone = findViewById(R.id.phone);
-        mSignupBtn = findViewById(R.id.btnsignup);
+        mSignupBtn = findViewById(R.id.signup);
 
         fAuth = FirebaseAuth.getInstance();
 

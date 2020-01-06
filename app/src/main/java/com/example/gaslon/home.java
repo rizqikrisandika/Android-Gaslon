@@ -30,7 +30,6 @@ public class home extends AppCompatActivity {
 
         btOrderhome = findViewById(R.id.orderhome);
         btStorehome = findViewById(R.id.storehome);
-        btLiveChat = findViewById(R.id.btLiveChat);
         imgProfil = findViewById(R.id.imgProfil);
         textName = findViewById(R.id.profil_nama_home);
         mAuth = FirebaseAuth.getInstance();

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".profile">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="65dp"
+        android:layout_marginRight="65dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            app:srcCompat="@drawable/team" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/profil_nama"
+            android:text="rizqikrisandika"
+            android:gravity="center"
+            android:layout_marginTop="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/profil_hp"
+            android:text="081228214411"
+            android:gravity="center"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/nama"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/edit_txtprofil"
+            android:backgroundTint="#CECECE"
+            android:elevation="30dp"
+            android:text="rizqikrisandika"
+            android:paddingLeft="20dp"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/profileEmail"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edit_txtprofil"
+            android:backgroundTint="#CECECE"
+            android:elevation="30dp"
+            android:text="email"
+            android:paddingLeft="20dp"
+            android:textSize="14sp" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:backgroundTint="#CECECE"
+            android:background="@drawable/edit_txtprofil"
+            android:textSize="14sp"
+            android:elevation="30dp"
+            android:layout_marginTop="20dp"
+            android:entries="@array/android_dropdown_arrays" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/no_hp"
+            android:text="081228214411"
+            android:backgroundTint="#CECECE"
+            android:background="@drawable/edit_txtprofil"
+            android:paddingLeft="20dp"
+            android:textSize="14sp"
+            android:elevation="30dp"
+            android:layout_marginTop="20dp"/>
+
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="40dp"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/bakcground"
+            android:background="@drawable/button_oval"
+            android:text="Edit" />
+
+    </LinearLayout>
+
+</LinearLayout>

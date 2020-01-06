@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Order">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="125dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="15dp"
+            app:srcCompat="@drawable/store" />
+
+        <TextView
+            android:id="@+id/toko"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="50dp"
+            android:gravity="center"
+            android:text="Toko Gas dan Galon Maju Mundur"
+            android:textColor="#000"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="65dp"
+        android:layout_marginRight="55dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imgGas"
+            android:layout_width="84dp"
+            android:layout_height="83dp"
+            android:layout_marginTop="15dp"
+            app:srcCompat="@drawable/gas" />
+
+        <LinearLayout
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtGas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="25dp"
+                android:gravity="center"
+                android:text="Gas 3 Kg"
+                android:textColor="#000"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txtHarga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="25dp"
+                android:gravity="center"
+                android:text="Rp. 27.500"
+                android:textColor="#000"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="43dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/pcss"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/edit_text"
+                android:backgroundTint="#fff"
+                android:elevation="30dp"
+                android:gravity="center"
+                android:hint="1"
+                android:inputType="textEmailAddress" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imgAddd"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="15dp"
+                app:srcCompat="@drawable/add" />
+
+            <ImageView
+                android:id="@+id/imgMinn"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="15dp"
+                app:srcCompat="@drawable/minus" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="65dp"
+        android:layout_marginRight="55dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imgGalon"
+            android:layout_width="84dp"
+            android:layout_height="83dp"
+            android:layout_marginTop="15dp"
+            app:srcCompat="@drawable/galon" />
+
+        <LinearLayout
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtGalon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="25dp"
+                android:gravity="center"
+                android:text="Aqua"
+                android:textColor="#000"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txtHargaa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="25dp"
+                android:gravity="center"
+                android:text="Rp. 30.500"
+                android:textColor="#000"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="43dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/pcs"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/edit_text"
+                android:backgroundTint="#fff"
+                android:elevation="30dp"
+                android:gravity="center"
+                android:hint="1"
+                android:inputType="textEmailAddress" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imgAdd"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="15dp"
+                app:srcCompat="@drawable/add" />
+
+            <ImageView
+                android:id="@+id/imgMin"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="15dp"
+                app:srcCompat="@drawable/minus" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="65dp"
+        android:layout_marginRight="55dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imgGalonn"
+            android:layout_width="84dp"
+            android:layout_height="83dp"
+            android:layout_marginTop="15dp"
+            app:srcCompat="@drawable/galon" />
+        <LinearLayout
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtGalonn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:text="Air Isi Ulang"
+                android:textColor="#000"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/Hargaa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:text="Rp. 30.500"
+                android:textColor="#000"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="43dp"
+            android:layout_marginLeft="20dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/txtPcs"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/edit_text"
+                android:backgroundTint="#fff"
+                android:elevation="30dp"
+                android:gravity="center"
+                android:hint="1"
+                android:inputType="textEmailAddress" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/Add"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="15dp"
+                app:srcCompat="@drawable/add" />
+
+            <ImageView
+                android:id="@+id/Min"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="15dp"
+                app:srcCompat="@drawable/minus" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="60dp"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="180dp"
+            android:layout_height="2dp"
+            android:layout_gravity="right"
+            android:background="#3F3D3D"/>
+
+        <LinearLayout
+            android:layout_width="182dp"
+            android:layout_height="27dp"
+            android:layout_marginLeft="110dp"
+            android:layout_marginRight="60dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Total" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="10dp"
+                android:text="Rp 50.000" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/orderorder"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_oval"
+            android:backgroundTint="@color/bakcground"
+            android:text="Order" />
+    </LinearLayout>
+
+</LinearLayout>
