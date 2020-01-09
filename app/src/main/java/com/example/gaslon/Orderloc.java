@@ -5,7 +5,12 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -14,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -35,9 +41,19 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.AutocompletePrediction;
 import com.google.android.libraries.places.api.model.AutocompleteSessionToken;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.model.TypeFilter;
+import com.google.android.libraries.places.api.net.FetchPlaceRequest;
+import com.google.android.libraries.places.api.net.FetchPlaceResponse;
+import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRequest;
+import com.google.android.libraries.places.api.net.FindAutocompletePredictionsResponse;
 import com.google.android.libraries.places.api.net.PlacesClient;
 import com.mancj.materialsearchbar.MaterialSearchBar;
+import com.mancj.materialsearchbar.adapter.SuggestionsAdapter;
+import com.skyfishjy.library.RippleBackground;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -53,6 +69,7 @@ public class Orderloc extends AppCompatActivity implements OnMapReadyCallback {
     private MaterialSearchBar materialSearchBar;
     private View mapView;
     private Button btnFind;
+    private RippleBackground ripple_bg;
 
     private final float DEFAULT_ZOOM = 18;
 
@@ -63,6 +80,7 @@ public class Orderloc extends AppCompatActivity implements OnMapReadyCallback {
 
         materialSearchBar = findViewById(R.id.searchBar);
         btnFind = findViewById(R.id.btnFind);
+        ripple_bg = findViewById(R.id.ripple_bg);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.cek_map);
         mapFragment.getMapAsync(this);
@@ -72,6 +90,139 @@ public class Orderloc extends AppCompatActivity implements OnMapReadyCallback {
         placesClient = Places.createClient(this);
         AutocompleteSessionToken token =  AutocompleteSessionToken.newInstance();
 
+        materialSearchBar.setOnSearchActionListener(new MaterialSearchBar.OnSearchActionListener() {
+            @Override
+            public void onSearchStateChanged(boolean enabled) {
+
+            }
+
+            @Override
+            public void onSearchConfirmed(CharSequence text) {
+                startSearch(text.toString(), true, null, true);
+            }
+
+            @Override
+            public void onButtonClicked(int buttonCode) {
+                if(buttonCode == MaterialSearchBar.BUTTON_NAVIGATION){
+
+                } else if(buttonCode == MaterialSearchBar.BUTTON_BACK){
+                    materialSearchBar.disableSearch();
+                }
+            }
+        });
+
+        materialSearchBar.addTextChangeListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                FindAutocompletePredictionsRequest predictionsRequest = FindAutocompletePredictionsRequest.builder()
+                        .setCountry("Jakarta")
+                        .setTypeFilter(TypeFilter.ADDRESS)
+                        .setSessionToken(token)
+                        .setQuery(s.toString())
+                        .build();
+                placesClient.findAutocompletePredictions(predictionsRequest).addOnCompleteListener(new OnCompleteListener<FindAutocompletePredictionsResponse>() {
+                    @Override
+                    public void onComplete(@NonNull Task<FindAutocompletePredictionsResponse> task) {
+                        if(task.isSuccessful()){
+                            FindAutocompletePredictionsResponse predictionsResponse = task.getResult();
+                            if (predictionsResponse != null){
+                                predictionList = predictionsResponse.getAutocompletePredictions();
+                                List<String> suggestionsList = new ArrayList<>();
+                                for(int i=0; i<predictionList.size();i++){
+                                    AutocompletePrediction prediction = predictionList.get(i);
+                                    suggestionsList.add(prediction.getFullText(null).toString());
+                                }
+                                materialSearchBar.updateLastSuggestions(suggestionsList);
+                                if(!materialSearchBar.isSuggestionsVisible()){
+                                    materialSearchBar.showSuggestionsList();
+                                }
+                            }
+                        } else{
+                            Log.i("mytag","unsuccessful");
+                        }
+                    }
+                });
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        materialSearchBar.setSuggstionsClickListener(new SuggestionsAdapter.OnItemViewClickListener() {
+            @Override
+            public void OnItemClickListener(int position, View v) {
+                if(position>= predictionList.size()){
+                    return;
+                }
+                AutocompletePrediction selectedPrediction  = predictionList.get(position);
+                String suggestion = materialSearchBar.getLastSuggestions().get(position).toString();
+                materialSearchBar.setText(suggestion);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        materialSearchBar.clearSuggestions();
+                    }
+                }, 1000);
+
+                InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                if (imm !=null)
+                    imm.hideSoftInputFromWindow(materialSearchBar.getWindowToken(), InputMethodManager.HIDE_IMPLICIT_ONLY);
+                String placeId = selectedPrediction.getPlaceId();
+                List<Place.Field> placeFields  = Arrays.asList(Place.Field.LAT_LNG);
+
+                FetchPlaceRequest fetchPlaceRequest =  FetchPlaceRequest.builder(placeId, placeFields).build();
+                placesClient.fetchPlace(fetchPlaceRequest).addOnSuccessListener(new OnSuccessListener<FetchPlaceResponse>() {
+                    @Override
+                    public void onSuccess(FetchPlaceResponse fetchPlaceResponse) {
+                        Place place = fetchPlaceResponse.getPlace();
+                        Log.i("mytag","Tempat ditemukan : "+ place.getName());
+                        LatLng latlngOfPlace = place.getLatLng();
+                        if(latlngOfPlace != null){
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latlngOfPlace, DEFAULT_ZOOM));
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        if(e instanceof ApiException){
+                            ApiException apiException = (ApiException) e;
+                            apiException.printStackTrace();
+                            int statusCode = apiException.getStatusCode();
+                            Log.i("mytag", "Tempat tidak ditemukan : "+ e.getMessage());
+                            Log.i("mytag", "Status code: "+statusCode);
+                        }
+                    }
+                });
+            }
+
+            @Override
+            public void OnItemDeleteListener(int position, View v) {
+
+            }
+        });
+        btnFind.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LatLng currentMarkerLocation = mMap.getCameraPosition().target;
+                ripple_bg.startRippleAnimation();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        ripple_bg.stopRippleAnimation();
+                        startActivity(new Intent(Orderloc.this, Order.class));
+                        finish();
+                    }
+                }, 3000);
+            }
+        });
     }
 
     @SuppressLint("MissingPermission")
@@ -119,6 +270,17 @@ public class Orderloc extends AppCompatActivity implements OnMapReadyCallback {
                 }
             }
         });
+
+        mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
+            @Override
+            public boolean onMyLocationButtonClick() {
+                if(materialSearchBar.isSuggestionsVisible())
+                    materialSearchBar.clearSuggestions();
+                if(materialSearchBar.isSearchEnabled())
+                    materialSearchBar.disableSearch();
+                return false;
+            }
+        });
     }
 
     @Override
@@ -142,7 +304,7 @@ public class Orderloc extends AppCompatActivity implements OnMapReadyCallback {
                             if(mLastKnownLocation != null){
                                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
                             } else {
-                                LocationRequest locationRequest = LocationRequest.create();
+                                final LocationRequest locationRequest = LocationRequest.create();
                                 locationRequest.setInterval(10000);
                                 locationRequest.setFastestInterval(5000);
                                 locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
