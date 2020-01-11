@@ -18,11 +18,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/imageView2"
-        android:layout_marginTop="-239dp"
-        android:fontFamily="sans-serif-medium"
+        android:layout_marginTop="-272dp"
+        android:fontFamily="sans-serif-condensed-light"
         android:gravity="center"
         android:text="GASLON"
         android:textColor="#ffffff"
-        android:textSize="70sp" />
+        android:textSize="50sp" />
 
 </RelativeLayout>

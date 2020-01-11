@@ -53,6 +53,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/NametokoA"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Toko Maju mundur"
@@ -62,6 +63,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/AddtokoA"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Jalan Jayaraya"
@@ -107,6 +109,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/NametokoB"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Toko Berkah"
@@ -116,6 +119,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/AddtokoB"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Jalan Jayaraya"
@@ -161,6 +165,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/NametokoC"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Toko Barokah"
@@ -170,6 +175,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/AddtokoC"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Jalan Jayabadra"
@@ -215,6 +221,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/NametokoD"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Toko Maju terus"
@@ -224,6 +231,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/AddtokoD"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Jalan Jayapada"
@@ -269,6 +277,8 @@
                     android:orientation="vertical">
 
                     <TextView
+
+                        android:id="@+id/NametokoE"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Toko Maju terus"
@@ -278,6 +288,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/AddtokoE"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Jalan Rayajaya"
@@ -323,6 +334,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/NametokoF"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Toko Angsuran"
@@ -332,6 +344,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/AddtokoF"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Jalan Sudirman"

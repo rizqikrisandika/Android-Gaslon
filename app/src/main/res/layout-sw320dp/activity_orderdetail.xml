@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     tools:context=".orderdetail">
 
     <LinearLayout
@@ -236,72 +237,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="60dp"
-        android:orientation="vertical">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="27dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:gravity="left"
-                android:text="Subs Total" />
-
-            <TextView
-                android:id="@+id/subsDetail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="80dp"
-                android:layout_marginTop="10dp"
-                android:text="Rp 50.000" />
-        </LinearLayout>
-    </LinearLayout>
-
-
-
-
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="60dp"
         android:orientation="vertical">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#3F3D3D"/>
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="27dp"
-            android:orientation="horizontal">
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            android:gravity="center">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginRight="60dp"
-                android:gravity="left"
+                android:gravity="center"
                 android:text="Total" />
 
             <TextView
                 android:id="@+id/totalDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="80dp"
-                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
                 android:text="Rp 50.000" />
         </LinearLayout>
 

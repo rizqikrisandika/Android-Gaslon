@@ -3,6 +3,7 @@ package com.example.gaslon.Model;
 import java.io.Serializable;
 
 public class OrderData implements Serializable {
+    private String IDtoko;
     private String QuantityGas;
     private String QuantityGalon;
     private String QuantityIsiUlang;
@@ -43,15 +44,25 @@ public class OrderData implements Serializable {
         QuantityIsiUlang = quantityIsiUlang;
     }
 
+    public String getIDtoko() {
+        return IDtoko;
+    }
+
+    public void setIDtoko(String IDtoko) {
+        this.IDtoko = IDtoko;
+    }
+
     @Override
     public String toString(){
-        return " "+QuantityGas+"\n"+
+        return " "+IDtoko+"\n"+
+                " "+QuantityGas+"\n"+
                 " "+QuantityGalon+"\n"+
                 " "+QuantityIsiUlang+"\n"+
                 " "+OrderName;
     }
 
-    public OrderData(String quantityGas, String quantityGalon, String quantityIsiUlang, String orderName) {
+    public OrderData(String IDtoko, String quantityGas, String quantityGalon, String quantityIsiUlang, String orderName) {
+        this.IDtoko = IDtoko;
         QuantityGas = quantityGas;
         QuantityGalon = quantityGalon;
         QuantityIsiUlang = quantityIsiUlang;
