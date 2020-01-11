@@ -41,6 +41,7 @@
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:layout_gravity="left"
+                    android:layout_marginLeft="20dp"
                     android:id="@+id/imgStore"
                     android:src="@drawable/store" />
 
@@ -74,6 +75,7 @@
 
         <!-- 1,2-->
         <androidx.cardview.widget.CardView
+            android:id="@+id/tokoB"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -94,6 +96,7 @@
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:layout_gravity="left"
+                    android:layout_marginLeft="20dp"
                     android:src="@drawable/store" />
 
                 <LinearLayout
@@ -126,6 +129,7 @@
 
         <!-- 1,3-->
         <androidx.cardview.widget.CardView
+            android:id="@+id/tokoC"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -146,6 +150,7 @@
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:layout_gravity="left"
+                    android:layout_marginLeft="20dp"
                     android:src="@drawable/store" />
 
                 <LinearLayout
@@ -178,6 +183,7 @@
 
         <!-- 2,1-->
         <androidx.cardview.widget.CardView
+            android:id="@+id/tokoD"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -198,6 +204,7 @@
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:layout_gravity="left"
+                    android:layout_marginLeft="20dp"
                     android:src="@drawable/store" />
 
                 <LinearLayout
@@ -230,6 +237,7 @@
 
         <!-- 2,2-->
         <androidx.cardview.widget.CardView
+            android:id="@+id/tokoE"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -250,6 +258,7 @@
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:layout_gravity="left"
+                    android:layout_marginLeft="20dp"
                     android:src="@drawable/store" />
 
                 <LinearLayout
@@ -282,6 +291,7 @@
 
         <!-- 2,3-->
         <androidx.cardview.widget.CardView
+            android:id="@+id/tokoF"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -302,6 +312,7 @@
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:layout_gravity="left"
+                    android:layout_marginLeft="20dp"
                     android:src="@drawable/store" />
 
                 <LinearLayout
