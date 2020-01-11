@@ -14,4 +14,27 @@ public class userDB {
     public userDB() {
     }
 
+    public String getPrfName() {
+        return prfName;
+    }
+
+    public void setPrfName(String prfName) {
+        this.prfName = prfName;
+    }
+
+    public String getPrfEmail() {
+        return prfEmail;
+    }
+
+    public void setPrfEmail(String prfEmail) {
+        this.prfEmail = prfEmail;
+    }
+
+    public String getPrfPhone() {
+        return prfPhone;
+    }
+
+    public void setPrfPhone(String prfPhone) {
+        this.prfPhone = prfPhone;
+    }
 }
