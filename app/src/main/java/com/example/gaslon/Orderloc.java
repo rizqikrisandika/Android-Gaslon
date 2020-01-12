@@ -217,7 +217,7 @@ public class Orderloc extends AppCompatActivity implements OnMapReadyCallback {
                     @Override
                     public void run() {
                         ripple_bg.stopRippleAnimation();
-                        startActivity(new Intent(Orderloc.this, Order.class));
+                        startActivity(new Intent(Orderloc.this, orderdetail.class));
                         finish();
                     }
                 }, 3000);

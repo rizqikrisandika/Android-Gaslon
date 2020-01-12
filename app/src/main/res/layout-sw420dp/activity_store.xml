@@ -53,6 +53,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/NametokoA"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Toko Maju mundur"
@@ -62,9 +63,10 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/AddtokoA"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Jalan Jayaraya"
+                        android:text="Jl. Jayaraya"
                         android:textAlignment="center"
                         android:textColor="@color/bakcground"
                         android:textSize="14sp"
@@ -107,6 +109,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/NametokoB"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Toko Berkah"
@@ -116,9 +119,10 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/AddtokoB"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Jalan Jayaraya"
+                        android:text="Jl. Muara Angke"
                         android:textAlignment="center"
                         android:textColor="@color/bakcground"
                         android:textSize="14sp"
@@ -161,6 +165,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/NametokoC"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Toko Barokah"
@@ -170,9 +175,10 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/AddtokoC"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Jalan Jayabadra"
+                        android:text="Jl. Jendral Iroh"
                         android:textAlignment="center"
                         android:textColor="@color/bakcground"
                         android:textSize="14sp"
@@ -215,6 +221,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/NametokoD"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Toko Maju terus"
@@ -224,9 +231,10 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/AddtokoD"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Jalan Jayapada"
+                        android:text="Jl. Bali"
                         android:textAlignment="center"
                         android:textColor="@color/bakcground"
                         android:textSize="14sp"
@@ -269,18 +277,21 @@
                     android:orientation="vertical">
 
                     <TextView
+
+                        android:id="@+id/NametokoE"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Toko Maju terus"
+                        android:text="Toko Angsuran"
                         android:textAlignment="center"
                         android:textColor="@color/bakcground"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/AddtokoE"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Jalan Rayajaya"
+                        android:text="Jl. Sukarno"
                         android:textAlignment="center"
                         android:textColor="@color/bakcground"
                         android:textSize="14sp"
@@ -323,18 +334,20 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/NametokoF"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Toko Angsuran"
+                        android:text="Toko Pusat Kota"
                         android:textAlignment="center"
                         android:textColor="@color/bakcground"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/AddtokoF"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Jalan Sudirman"
+                        android:text="Jl. Pemuda Selatan"
                         android:textAlignment="center"
                         android:textColor="@color/bakcground"
                         android:textSize="14sp"
