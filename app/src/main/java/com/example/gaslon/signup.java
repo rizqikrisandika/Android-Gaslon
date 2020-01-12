@@ -143,7 +143,7 @@ public class signup extends AppCompatActivity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        if (i == R.id.btnsignup) {
+        if (i == R.id.signup) {
             signUp();
         }
     }
