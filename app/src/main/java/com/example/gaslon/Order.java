@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Order extends AppCompatActivity {
     private Button orderorder;
-    private DatabaseReference database;
+    private DatabaseReference database, toko;
     private TextView namaToko;
     private ElegantNumberButton qtGas, qtGalon, qtIsiulang;
     private FirebaseAuth mAuth;
@@ -37,6 +37,7 @@ public class Order extends AppCompatActivity {
         setContentView(R.layout.activity_order);
 
         database = FirebaseDatabase.getInstance().getReference();
+        toko = FirebaseDatabase.getInstance().getReference().child("Toko");
         mAuth = FirebaseAuth.getInstance();
 
         qtGas = findViewById(R.id.number_button_gas);
@@ -48,7 +49,7 @@ public class Order extends AppCompatActivity {
         Bundle kodeToko = getIntent().getExtras();
         kode = kodeToko.getString(Toko);
         switch (kode){
-            case "1":
+            case "01":
                 database.child("Toko").child("01").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -65,7 +66,7 @@ public class Order extends AppCompatActivity {
                     }
                 });
                 break;
-            case "2":
+            case "02":
                 database.child("Toko").child("02").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -82,7 +83,7 @@ public class Order extends AppCompatActivity {
                     }
                 });
                 break;
-            case "3":
+            case "03":
                 database.child("Toko").child("03").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -99,7 +100,7 @@ public class Order extends AppCompatActivity {
                     }
                 });
                 break;
-            case "4":
+            case "04":
                 database.child("Toko").child("04").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -116,7 +117,7 @@ public class Order extends AppCompatActivity {
                     }
                 });
                 break;
-            case "5":
+            case "05":
                 database.child("Toko").child("05").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -156,13 +157,15 @@ public class Order extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!isEmpty(qtGas.getNumber()) && !isEmpty(qtGalon.getNumber()))
-                    submitOrder(new OrderData(database.child("Toko").push().getKey(),
+                    submitOrder(new OrderData(database.child("Toko").child(kode).getKey(),
                             qtGas.getNumber(),
                             qtGalon.getNumber(),
                             qtIsiulang.getNumber(),
                             mAuth.getCurrentUser().getEmail()));
 
+                String code = kode, idtoko = " ";
                 Intent i = new Intent(Order.this, Orderloc.class);
+                i.putExtra(idtoko, code);
                 startActivity(i);
             }
         });
@@ -175,7 +178,7 @@ public class Order extends AppCompatActivity {
 
     private void submitOrder(OrderData orderData){
         database.child("Order").push().setValue(orderData).addOnSuccessListener(this, aVoid -> {
-            database.child("Toko").push().getKey();
+            database.child("Toko").child(kode).getKey();
             qtGas.getNumber();
             qtGalon.getNumber();
             qtIsiulang.getNumber();
@@ -183,15 +186,4 @@ public class Order extends AppCompatActivity {
             Snackbar.make(findViewById(R.id.orderorder), "Pemesanan Berhasil", Snackbar.LENGTH_LONG).show();
         });
     }
-
-    //public void totalPrice(){
-        //int totalP = 0;
-        //for (OrderData orderData:)
-        //totalP+=((Integer.parseInt(qtGas.getNumber()))*27500)+((Integer.parseInt(qtGalon.getNumber()))*30500);
-
-        //Locale locale = new Locale("en","US");
-        //NumberFormat frmt = NumberFormat.getNumberInstance(locale);
-
-        //price.setText(frmt.format(totalP));
-    //}
 }

@@ -31,19 +31,6 @@
             android:src="@drawable/ic_tempat"/>
     </com.skyfishjy.library.RippleBackground>
 
-    <com.mancj.materialsearchbar.MaterialSearchBar
-        style="@style/MaterialSearchBarLight"
-        app:mt_speechMode="false"
-        app:mt_hint="Cari Lokasi Toko"
-        app:mt_maxSuggestionsCount="10"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/searchBar"
-        app:mt_navIconEnabled="true"
-        android:layout_margin="16dp"
-        android:elevation="5dp"
-        app:mt_placeholder="Cari Lokasi Toko" />
-
     <Button
         android:id="@+id/btnFind"
         android:layout_width="match_parent"

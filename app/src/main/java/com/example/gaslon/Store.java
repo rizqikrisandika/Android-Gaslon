@@ -53,7 +53,7 @@ public class Store extends AppCompatActivity {
             switch (v.getId()){
                 case R.id.tokoA:
                     try {
-                        String kode = "1";
+                        String kode = "01";
                         Intent i = new Intent(Store.this, Order.class);
                         i.putExtra(kodeToko, kode);
                         startActivity(i);
@@ -63,7 +63,7 @@ public class Store extends AppCompatActivity {
                     break;
                 case R.id.tokoB:
                     try {
-                        String kode = "2";
+                        String kode = "02";
                         Intent i = new Intent(Store.this, Order.class);
                         i.putExtra(kodeToko, kode);
                         startActivity(i);
@@ -73,7 +73,7 @@ public class Store extends AppCompatActivity {
                     break;
                 case R.id.tokoC:
                     try {
-                        String kode = "3";
+                        String kode = "03";
                         Intent i = new Intent(Store.this, Order.class);
                         i.putExtra(kodeToko, kode);
                         startActivity(i);
@@ -83,7 +83,7 @@ public class Store extends AppCompatActivity {
                     break;
                 case R.id.tokoD:
                     try {
-                        String kode = "4";
+                        String kode = "04";
                         Intent i = new Intent(Store.this, Order.class);
                         i.putExtra(kodeToko, kode);
                         startActivity(i);
@@ -93,7 +93,7 @@ public class Store extends AppCompatActivity {
                     break;
                 case R.id.tokoE:
                     try {
-                        String kode = "5";
+                        String kode = "05";
                         Intent i = new Intent(Store.this, Order.class);
                         i.putExtra(kodeToko, kode);
                         startActivity(i);
@@ -103,7 +103,7 @@ public class Store extends AppCompatActivity {
                     break;
                 case R.id.tokoF:
                     try {
-                        String kode = "6";
+                        String kode = "06";
                         Intent i = new Intent(Store.this, Order.class);
                         i.putExtra(kodeToko, kode);
                         startActivity(i);
