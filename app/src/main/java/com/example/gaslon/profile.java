@@ -16,7 +16,6 @@ import com.google.firebase.database.ValueEventListener;
 public class profile extends AppCompatActivity {
     private TextView mName, mEmail,mPhone,profilNama,profilHp;
     private FirebaseAuth mAuth;
-    private FirebaseDatabase getDB;
     private DatabaseReference profileUser;
     private String currentUserId;
 

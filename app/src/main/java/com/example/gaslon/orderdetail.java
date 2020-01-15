@@ -14,10 +14,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class orderdetail extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference idorder;
     private String currentUserId;
+    private String kode, Toko = " ";
     private TextView qtGas,qtGalon,qtisi;
     private TextView hrgGas,hrgGalon,hrgIsi,total;
     OrderData orderData;
@@ -35,45 +39,33 @@ public class orderdetail extends AppCompatActivity {
         hrgIsi = findViewById(R.id.txtHargaDetailIsi);
         total = findViewById(R.id.totalDetail);
 
-        idorder = FirebaseDatabase.getInstance().getReference().child("Order");
+        Bundle kodeToko = getIntent().getExtras();
+        kode = kodeToko.getString(Toko);
+
+        idorder = FirebaseDatabase.getInstance().getReference().child("Order").child(kode);
 
         idorder.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //if (dataSnapshot.exists()){
-                    //String totalGas = dataSnapshot.child("quantityGas").getValue().toString();
-                    //String totalGalon = dataSnapshot.child("quantityGalon").getValue().toString();
-                    //String totalIsi = dataSnapshot.child("quantityIsiUlang").getValue().toString();
+                if (dataSnapshot.exists()){
+                    String totalGas = dataSnapshot.child("quantityGas").getValue().toString();
+                    String totalGalon = dataSnapshot.child("quantityGalon").getValue().toString();
+                    String totalIsi = dataSnapshot.child("quantityIsiUlang").getValue().toString();
 
-                    //qtGas.setText(totalGas);
-                    //qtGalon.setText(totalGalon);
-                    //qtisi.setText(totalIsi);
-                    //hrgGas.setText((Integer.parseInt(totalGas))*27500);
-                    //hrgGalon.setText((Integer.parseInt(totalGalon))*30500);
-                    //hrgIsi.setText((Integer.parseInt(totalIsi))*30500);
-                    //total.setText(((Integer.parseInt(totalGas))*27500)+
-                            //((Integer.parseInt(totalGalon))*30500)+
-                            //((Integer.parseInt(totalIsi))*30500));
-                orderData = dataSnapshot.getValue(OrderData.class);
+                    qtGas.setText(totalGas);
+                    qtGalon.setText(totalGalon);
+                    qtisi.setText(totalIsi);
 
-                int odrGas = Integer.parseInt(orderData.getQuantityGas());
-                int odrGalon = Integer.parseInt(orderData.getQuantityGalon());
-                int odrIsi = Integer.parseInt(orderData.getQuantityIsiUlang());
+                    totalhasil(totalGas,totalGalon,totalIsi);
+                //orderData = dataSnapshot.getValue(OrderData.class);
 
-                int totGas = odrGas*27500;
-                int totGalon = odrGalon*30500;
-                int totIsi = odrIsi*30500;
-                int totalall = totGas + totGalon + totIsi;
 
-                qtGas.setText(orderData.getQuantityGas());
-                qtGalon.setText(orderData.getQuantityGalon());
-                qtisi.setText(orderData.getQuantityIsiUlang());
+                //qtGas.setText(orderData.getQuantityGas());
+                //qtGalon.setText(orderData.getQuantityGalon());
+                //qtisi.setText(orderData.getQuantityIsiUlang());
 
-                    hrgGas.setText(String.valueOf(totGas));
-                    hrgGalon.setText(String.valueOf(totGalon));
-                    hrgIsi.setText(String.valueOf(totIsi));
-                    total.setText(String.valueOf(totalall));
-                //}
+                    //total.setText(((Integer.parseInt(orderData.getQuantityGas()))*27500)+((Integer.parseInt(orderData.getQuantityGalon()))*30500)+((Integer.parseInt(orderData.getQuantityIsiUlang()))*30500));
+                }
             }
 
             @Override
@@ -82,5 +74,15 @@ public class orderdetail extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void totalhasil(String a, String b, String c){
+        int totalall = 0;
+        totalall = (((Integer.parseInt(a))*27500)+((Integer.parseInt(b))*30500)+((Integer.parseInt(c))*30500));
+
+        Locale locale = new Locale("en","US");
+        NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
+
+        total.setText(fmt.format(totalall));
     }
 }

@@ -177,7 +177,7 @@ public class Order extends AppCompatActivity {
     }
 
     private void submitOrder(OrderData orderData){
-        database.child("Order").push().setValue(orderData).addOnSuccessListener(this, aVoid -> {
+        database.child("Order").child(kode).setValue(orderData).addOnSuccessListener(this, aVoid -> {
             database.child("Toko").child(kode).getKey();
             qtGas.getNumber();
             qtGalon.getNumber();
