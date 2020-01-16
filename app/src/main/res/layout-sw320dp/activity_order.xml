@@ -92,7 +92,7 @@
                 android:layout_marginBottom="18dp"
                 app:textSize="6sp"
                 app:backGroundColor="@color/bakcground"
-                app:initialNumber="1"
+                app:initialNumber="0"
                 app:finalNumber="20"
                 />
         </LinearLayout>
@@ -155,7 +155,7 @@
                 android:layout_marginBottom="18dp"
                 app:textSize="6sp"
                 app:backGroundColor="@color/bakcground"
-                app:initialNumber="1"
+                app:initialNumber="0"
                 app:finalNumber="20"
                 />
         </LinearLayout>
@@ -218,7 +218,7 @@
                 android:layout_marginBottom="18dp"
                 app:textSize="6sp"
                 app:backGroundColor="@color/bakcground"
-                app:initialNumber="1"
+                app:initialNumber="0"
                 app:finalNumber="20"
                 />
         </LinearLayout>
